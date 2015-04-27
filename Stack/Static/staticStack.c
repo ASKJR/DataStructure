@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "staticStack.h"
-
-struct pilha{
-	int topo;
-	int elementos[MAX];
-};
 
 Pilha* cria_Pilha(){
 	Pilha* pi;
@@ -57,25 +50,17 @@ void consulta_topo_Pilha(Pilha* pi){
 		printf("Pilha vazia, ou erro alocacao!\n");
 	else printf("Topo: %d\n",pi->elementos[pi->topo-1]);
 }
-
-
-int main(){
-	//ponteiro que aponta para estrutura da pilha
-	Pilha* pi;
-	pi = cria_Pilha();
-	insere_Pilha(pi,5);
-	insere_Pilha(pi,7);
-	insere_Pilha(pi,56);
-	insere_Pilha(pi,3);
-	consulta_topo_Pilha(pi);
-	remove_Pilha(pi);
-	consulta_topo_Pilha(pi);
-	remove_Pilha(pi);
-	printf("Tamanho pilha: %d\n",tamanho_Pilha(pi));
-	consulta_topo_Pilha(pi);
-	insere_Pilha(pi,99);
-	consulta_topo_Pilha(pi);
-	printf("Tamanho pilha: %d\n",tamanho_Pilha(pi));
-	libera_Pilha(pi);
-	return 0;
+void imprimi_Pilha(Pilha* pi){
+	int i=0;
+	if(pi == NULL){
+		printf("Erro ao alocar memoria\n");
+		return;
+	}
+	if(Pilha_vazia(pi)){
+		printf("A pilha esta vazia!\n");
+		return;		
+	}
+	for(i=pi->topo-1;i>=0;i--){
+		printf("%d\n",pi->elementos[i]);
+	}
 }
