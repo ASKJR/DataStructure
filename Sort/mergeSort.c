@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
-#define MAX 100000
 
 void merge(int *V,int inicio, int meio, int fim);
 void mergeSort (int *V,int inicio, int fim);
 
-void mergeSort (int *V,int inicio, int fim){//dividir os dados
+
+//Dividir os dados em sub arrays.
+void mergeSort (int *V,int inicio, int fim){
 	if(inicio<fim){
 		int meio = (inicio+fim)/2;
 		mergeSort(V,inicio,meio);
@@ -14,6 +14,7 @@ void mergeSort (int *V,int inicio, int fim){//dividir os dados
 		merge(V,inicio,meio,fim);
 	}
 }
+//Ordenar os sub arrays
 void merge(int *V,int inicio, int meio, int fim){
 	int *temp, p1, p2, tamanho, i, j, k;
 	int fim1 = 0 , fim2 = 0 ;
@@ -50,30 +51,3 @@ void merge(int *V,int inicio, int meio, int fim){
 	free(temp);
 }
 
-int main(){
-	int N,i,par[MAX],impar[MAX],in,indP=0,indI=0;
-	scanf("%d",&N);
-	for(i=0;i<N;i++){
-		scanf("%d",&in);
-		if(in%2==0){
-			par[indP] = in;
-			indP++;
-		}
-		else{
-			impar[indI] = in;
-			indI++;
-		}
-	}
-
-	mergeSort(par,0,indP-1);
-    mergeSort(impar,0,indI-1);
-    
-    for(i=0;i<indP;i++){
-		printf("%d\n",par[i]);
-	}
-    for(i=indI-1;i>=0;i--){
-		printf("%d\n",impar[i]);
-	}
-	return 0;
-
-}
