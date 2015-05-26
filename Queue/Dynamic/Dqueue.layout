@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+	<Files>
+		<File Name="dynamicQueue.c" Top="Yes" Tabpos="1" TopLine="42">
+			<Cursor Line="68" Column="1"/>
+		</File>
+		<File Name="dynamicQueue.h" Top="No" Tabpos="2" TopLine="1">
+			<Cursor Line="8" Column="15"/>
+		</File>
+		<File Name="main.c" Top="No" Tabpos="3" TopLine="1">
+			<Cursor Line="9" Column="35"/>
+		</File>
+	</Files>
+</Layout>
