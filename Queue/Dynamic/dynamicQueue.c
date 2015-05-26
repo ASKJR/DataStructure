@@ -59,10 +59,26 @@ int remove_Fila(Fila* fi){
 	if(fi->inicio == NULL)//fila ficou vazia
 		fi->final = NULL;
 	free(no);
+	return 1;
 }
 
 int consulta_Fila(Fila* fi){
 	if(fi == NULL) return -1;
 	if(fi->inicio == NULL) return -1;
 	return fi->inicio->dado;
+}
+
+void imprime_Fila(Fila* fi){
+	Fila* aux;
+	aux = cria_Fila();
+	while(!Fila_vazia(fi)){
+		printf("%d ",consulta_Fila(fi));
+		insere_Fila(aux,consulta_Fila(fi));
+		remove_Fila(fi);
+	}
+	while(!Fila_vazia(aux)){
+		insere_Fila(fi,consulta_Fila(aux));
+		remove_Fila(aux);
+	}
+	libera_Fila(aux);	
 }
