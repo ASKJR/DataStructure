@@ -55,7 +55,7 @@ int remove_Pilha(Pilha* pi){
 	return 1;
 }
 
-void consulta_topo_Pilha(Pilha* pi){
+int consulta_topo_Pilha(Pilha* pi){
 	if(pi == NULL){
 		   printf("erro pilha\n");
 		   return;	
@@ -64,5 +64,50 @@ void consulta_topo_Pilha(Pilha* pi){
 		 printf("pilha vazia\n");
 		 return;
 	}
-	printf("%d\n",(*pi)->dado);
+	return (*pi)->dado;
+}
+
+void imprime_Pilha(Pilha* pi){
+    Pilha* aux;
+    int val;
+	aux = cria_Pilha();
+	while(!Pilha_vazia(pi)){ 
+	    printf("%d\n",consulta_topo_Pilha(pi));
+	    insere_Pilha(aux,consulta_topo_Pilha(pi));
+	    remove_Pilha(pi);
+	}
+	while(!Pilha_vazia(aux)){
+		val = consulta_topo_Pilha(aux);
+		remove_Pilha(aux); 
+		insere_Pilha(pi,val);
+	}
+	return;
+}
+void inverter_Pilha(Pilha* pi){
+	Pilha* aux,aux2;
+	aux  = cria_Pilha();
+	aux2 = cria_Pilha();
+	while(!Pilha_vazia(pi)){
+		//printf("%d",consulta_topo_Pilha(pi));
+		insere_Pilha(aux,consulta_topo_Pilha(pi));
+		remove_Pilha(pi);
+	}
+	while(!Pilha_vazia(aux)){
+		//printf("%d",consulta_topo_Pilha(pi));
+		insere_Pilha(aux2,consulta_topo_Pilha(aux));
+		remove_Pilha(aux);
+	}
+	
+	while(!Pilha_vazia(aux2)){
+		//printf("%d",consulta_topo_Pilha(pi));
+		insere_Pilha(pi,consulta_topo_Pilha(aux2));
+		remove_Pilha(aux2);
+	}
+
+	return;
+}
+void menu(){
+	printf("------Pilha------\n\n");
+	printf("1-INSERIR\n2-REMOVER\n3-IMPRIMIR\n4-INVERTER\n5-SAIR\n\n");
+	printf("-----------------\n\n\n");
 }
