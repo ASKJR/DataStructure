@@ -107,3 +107,12 @@ void inverter_Fila(Fila* fi){
 	}
 	libera_Fila(aux);
 }
+void menu(){
+	printf("-----------FILA-----------\n\n");
+	printf("1-INSERIR\n");
+	printf("2-REMOVER\n");
+	printf("3-IMPRIMIR\n");
+	printf("4-INVERTER\n");
+	printf("5-SAIR\n\n");
+	printf("--------------------------\n\n");
+}
