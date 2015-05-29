@@ -21,3 +21,4 @@ int insere_Fila(Fila* fi,int valor);
 int remove_Fila(Fila* fi);
 int consulta_Fila(Fila* fi); //cosulta o inicio da fila
 void imprime_Fila(Fila* fi);
+void inverter_Fila(Fila* fi);

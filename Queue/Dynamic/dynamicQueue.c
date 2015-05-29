@@ -1,5 +1,6 @@
 #include "dynamicQueue.h"
 
+
 Fila* cria_Fila(){
 	Fila* fi = (Fila*) malloc(sizeof(Fila));
 	if(fi!=NULL){
@@ -76,9 +77,33 @@ void imprime_Fila(Fila* fi){
 		insere_Fila(aux,consulta_Fila(fi));
 		remove_Fila(fi);
 	}
+	printf("\n");
 	while(!Fila_vazia(aux)){
 		insere_Fila(fi,consulta_Fila(aux));
 		remove_Fila(aux);
 	}
 	libera_Fila(aux);	
+}
+void inverter_Fila(Fila* fi){
+	int tam,val,i,val2;
+	Fila* aux;
+	aux = cria_Fila();
+	//Cópia par aux;
+	while(!Fila_vazia(fi)){
+		insere_Fila(aux,consulta_Fila(fi));
+		remove_Fila(fi);
+	}
+	//Invertendo
+	while(!Fila_vazia(aux)){
+		val = consulta_Fila(aux);
+		insere_Fila(fi,val);
+        tam = tamanho_Fila(fi);
+		for(i=0;i<tam-1;i++){
+			val2 = consulta_Fila(fi);
+			remove_Fila(fi);
+			insere_Fila(fi,val2);
+		}
+		remove_Fila(aux);
+	}
+	libera_Fila(aux);
 }
